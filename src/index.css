@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Theme-aware background ---- */
+body {
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body:not(.dark) {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fef3c7 100%);
+  color: #1f2937;
+}
+
+body.dark {
+  background: radial-gradient(ellipse at bottom, #0b1020 0%, #03050a 70%);
+  color: #e2e8f0;
+}
+
+/* stars layer - dark mode only */
+body.dark::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, #9ae6ff, transparent),
+    radial-gradient(1px 1px at 70% 60%, #7dd3fc, transparent),
+    radial-gradient(1px 1px at 40% 80%, #c084fc, transparent),
+    radial-gradient(2px 2px at 90% 20%, #22d3ee, transparent);
+  opacity: .25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* glass panels */
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(56,189,248,0.08);
+}
+
+/* neon accent */
+.neon-text {
+  color: #7dd3fc;
+  text-shadow: 0 0 12px rgba(56,189,248,.7);
+}
+
+.neon-border {
+  border: 1px solid rgba(56,189,248,.4);
+  box-shadow: 0 0 12px rgba(56,189,248,.35);
+}
+
+/* subtle hover lift */
+.hover-lift {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 40px rgba(56,189,248,.18);
+}
